@@ -1,0 +1,33 @@
+<h1>プロジェクト一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>ステータス</th>
+      <th>担当者</th>
+      <th>得意先</th>
+      <th>工場</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.status %></td>
+        <td><%= project.user.name %></td>
+        <td><%= project.client.name %></td>
+        <td><%= project.factory.name %></td>
+        <td><%= link_to '詳細', project %></td>
+        <td><%= link_to '編集', edit_project_path(project) %></td>
+        <td><%= link_to '削除', project, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規プロジェクト作成', new_project_path %>

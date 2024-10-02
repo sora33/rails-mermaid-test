@@ -1,9 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :projects do
+    resources :project_materials
+    resources :manufacturing_processes
+    resources :inspections
+    resource :estimate
+    resource :approval
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :materials
+  resources :material_categories
+  resources :material_suppliers
+  resources :clients
+  resources :factories
+  resources :users
 end
